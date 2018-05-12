@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css?family=Skranji');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800');
+*{
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  list-style: none;
+}
+
+
+body{
+  background-color: #f1f1f2;
+    overflow: hidden;
+    font-family: 'Open Sans', sans-serif;
+
+}
+
+.angular-google-map-container { width: 60%;
+height: 90%;
+position: absolute; }
+
+.wrapper{
+  padding: 80px 0 0 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: transparent;
+}
+#contenedor{
+  height: 100%;
+}
+
+#header{
+  background-color: #fff;
+
+  padding: 20px;
+  height: 80px;
+  width: 100%;
+}
+
+.logo{
+
+  color:#F28A00;
+}
+
+h1{
+  font-family: 'Skranji', cursive;
+  color:#F28A00;
+}
+
+#body{
+  top:80px;
+  width: 100%;
+  max-height: 100%;
+
+}
+
+.contenido{
+  padding:10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-height: 100%;
+  background-color: #f1f1f2;
+  min-height: 100%;
+}
+
+.rate{
+  color:#FFFF00;
+}
+
+
+.restaurante{
+  padding: 30px 20px;
+  background: #fff;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+ul{
+  width: 100%;
+  padding:0;
+}
+
+#mapa{
+  height: 91%;
+}
+
+
+#map {
+width: 67%;
+height: 92%;
+position: absolute;
+}
+
+.nombre{
+  font-family: 'Montserrat', sans-serif;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  padding-bottom: 1px;
+  border-bottom-color: rgba(0,0,0,0.3);
+  margin-bottom: 8px;
+}
+
+.contenido::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
+	border-radius: 3px;
+	background-color: #F5F5F5;
+}
+
+.contenido::-webkit-scrollbar
+{
+	width: 5px;
+	background-color: #F5F5F5;
+}
+
+.contenido::-webkit-scrollbar-thumb
+{
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0 0 3px rgba(0,0,0,.3);
+	background-color: #555;
+}

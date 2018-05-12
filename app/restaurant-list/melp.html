@@ -1,0 +1,124 @@
+<html ng-app="melpApp">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../melp.css"/>
+
+    <meta name="viewport" content="initial-scale=1" />
+
+    <link rel="stylesheet" href="../include/css/angular-material.min.css">
+
+    <!--- JAVASCRIPT --->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDicCpZxo22FRRjkAi6KpGHiWzxDyPocWw"></script>
+    <!--- Angular Core --->
+    <script src="../include/js/angular.min.js"></script>
+    <script src="../include/js/angular-animate.min.js"></script>
+    <script src="../include/js/angular-aria.min.js"></script>
+    <script src="../include/js/angular-messages.min.js"></script>
+    <script src="../include/js/angular-route.min.js"></script>
+
+    <script src="../include/js/lodash.underscore.min.js"></script>
+    <script src="../include/js/angular-google-maps.min.js"></script>
+
+    <!--- Angular Material --->
+    <script src="../include/js/angular-material.min.js"></script>
+
+
+    <script src="../melp.js"></script>
+    <script src="../restaurant-list/melp.controller.js"></script>
+
+
+
+    <title>Melp</title>
+  </head>
+  <body ng-controller="restaurantController">
+  <div id="contenedor" layout="column">
+    <div  flex="80px" layout="row" id="header">
+      <div flex="40">
+        <div id="logo" layout="row">
+          <div layout layout-align="center center" flex = "10"><md-icon class="logo material-icons md-light md-48">fastfood</md-icon></div><div flex="90"><h1><span>MELP</span></h1></div>
+        </div>
+      </div>
+      <div flex="60">
+        <div layout="row">
+          <div flex="15" layout layout-align="center center">
+            Rating
+          </div>
+          <div flex="33">
+            <md-slider flex md-discrete ng-model="ratingSlide"  step="1" min="1" max="4" aria-label="rating">
+            </md-slider>
+          </div>
+          <div flex="15" layout layout-align="center center">
+            Radio
+          </div>
+          <div flex="33">
+            <md-slider flex md-discrete  step="1" min="1" max="100" aria-label="rating">
+            </md-slider>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+
+      <div flex layout="row" id="body">
+        <div flex="40">
+          <div layout="column" class="contenido" >
+            <div flex="10" layout="row">
+              <div layout layout-align="center center" flex><p>Ordenar por:</p></div>
+              <div flex><md-button ng-click="sortBy('name')" class="md-raised">Nombre</md-button></div>
+              <div flex><md-button ng-click="sortBy('rating')" class="md-raised">Rating</md-button></div>
+            </div>
+            <div flex>
+              <ul>
+                <li ng-click="marcador(restaurant.address.location.lat,restaurant.address.location.lng)" class="restaurante" ng-repeat="restaurant in restaurants | orderBy:propertyName:reverse">
+                  <div layout="column"  >
+                    <div class="nombre" layout="row">
+                      <div flex = "10"><md-icon class="material-icons md-light md-48">restaurant</md-icon></div><div flex="90"><h3><span>{{restaurant.name}}</span></h3></div>
+                    </div>
+                    <div  layout="row" layout-align="center center">
+                      <div ng-repeat="i in getNumber(restaurant.rating) track by $index" flex>
+                        <md-icon class="rate material-icons md-light md-48"> star_rate </md-icon>
+                      </div>
+                      <div ng-repeat="i in getNumber(4-restaurant.rating) track by $index" flex>
+                        <md-icon class="material-icons md-light md-48"> star_rate </md-icon>
+                      </div>
+                    </div>
+
+                    <div layout="row">
+                      <div flex = "10"><md-icon class="material-icons md-light md-48">location_on</md-icon></div><div flex>{{restaurant.address.street}}, {{restaurant.address.city}}, {{restaurant.address.state}}</div>
+                    </div>
+                    <div  layout="row">
+                      <div flex = "10"><md-icon class="material-icons md-light md-48">alternate_email</md-icon></div><div flex>{{restaurant.contact.email}}</div>
+                    </div>
+                    <div layout="row">
+                      <div flex = "10"><md-icon class="material-icons md-light md-48">web_asset</md-icon></div><div flex>{{restaurant.contact.site}}</div>
+                    </div>
+                    <div layout="row">
+                      <div flex = "10"><md-icon class="material-icons md-light md-48">local_phone</md-icon></div><div flex>{{restaurant.contact.phone}}</div>
+                    </div>
+
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+        <div flex="60" id="mapa">
+          <google-map center="map.center"
+          			zoom="map.zoom"
+          			draggable="true"
+          			options="map.options"
+          			control="map.control"
+                events="map.events">
+      		        <marker coords="marker.coords" options="marker.options" idkey="marker.id" ></marker>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+
+
+
+</html>
